@@ -1,23 +1,49 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { getStarWarsHeroes } from './utils/transporter';
+import { getStarWarsHeroes, getNextPage } from './utils/transporter';
+
+const STAR_WARS_HEROES = 'STAR_WARS_HEROES';
+
+const initialState = { persons: [], nextPage: null, count: null };
+
+function reducer(state, action) {
+	switch (action.type) {
+		case STAR_WARS_HEROES:
+			return {
+				persons: [...state.persons, ...action.payload.results],
+				nextPage: action.payload.next,
+				count: action.payload.count,
+			};
+		default:
+			return state;
+	}
+}
 
 function App() {
+	const [state, dispatch] = useReducer(reducer, initialState);
+
+	const handleNextPage = () => {
+		state.nextPage &&
+			getNextPage(state.nextPage).then((results) => {
+				dispatch({ type: STAR_WARS_HEROES, payload: results });
+			});
+	};
+
 	useEffect(() => {
-		getStarWarsHeroes().then((names) => console.log(names));
+		getStarWarsHeroes().then((result) => {
+			dispatch({ type: STAR_WARS_HEROES, payload: result });
+		});
 	}, []);
+
+	console.log({ state });
 
 	return (
 		<div className='App'>
 			<header className='App-header'>
 				<img src={logo} className='App-logo' alt='logo' />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-					Learn React
-				</a>
+				<p>Next Page</p>
+				<button onClick={handleNextPage}>next</button>
 			</header>
 		</div>
 	);
