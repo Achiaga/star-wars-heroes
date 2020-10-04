@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { heroesProptype } from '../../../constants';
+import HeroDetails from './heroes-details';
 
 const Wrapper = styled.div`
 	padding: 1em 0;
@@ -18,6 +19,7 @@ const Card = styled.div`
 	margin: 1em 0;
 	background-color: ${(props) => props.theme.colors.cardBg};
 	border-radius: 5px;
+	max-width: 500px;
 `;
 
 const CardText = styled.h4`
@@ -31,22 +33,15 @@ const CardName = styled(CardText)`
 	color: ${(props) => props.theme.colors.nameHeroe};
 `;
 
-const CardDetails = styled(CardText)`
-	padding: 0.3em 0;
-	color: ${(props) => props.theme.colors.secondaryTextColor};
-`;
-
 const HeroesList = ({ persons }) => {
 	return (
 		<Wrapper>
-			{persons.map((heroe, index) => {
+			{persons.map((hero, index) => {
 				return (
-					<Card id={heroe.name} key={index}>
-						<CardName>{heroe.name}</CardName>
+					<Card id={hero.name} key={index}>
+						<CardName>{hero.name}</CardName>
 						<hr></hr>
-						<CardDetails>Gender: {heroe.gender}</CardDetails>
-						<CardDetails>Birth year: {heroe.birth_year}</CardDetails>
-						<CardDetails>Hair: {heroe.hair_color}</CardDetails>
+						<HeroDetails hero={hero} />
 					</Card>
 				);
 			})}
