@@ -1,5 +1,4 @@
 import React from 'react';
-import SwitchThemeButton from '../../buttons/switch-theme-button';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -26,25 +25,24 @@ const HeroInput = styled.input`
 	}
 `;
 
-const SearchInput = ({ handleHeroeInput, heroValue = '' }) => {
+const SearchInput = ({ handleHeroInput, heroValue = '' }) => {
 	return (
 		<Wrapper>
 			<div>
 				<HeroInput
 					type='text'
 					placeholder='Search a Star Wars Heroe'
-					onChange={handleHeroeInput}
+					aria-label='search-input'
+					onChange={handleHeroInput}
 					value={heroValue}
 				/>
 			</div>
-			<SwitchThemeButton />
 		</Wrapper>
 	);
 };
 
 SearchInput.propTypes = {
-	handleHeroeInput: PropTypes.func.isRequired,
-	handleNextPage: PropTypes.func.isRequired,
+	handleHeroInput: PropTypes.func.isRequired,
 	heroValue: PropTypes.string,
 };
 

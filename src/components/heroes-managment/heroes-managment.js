@@ -5,6 +5,7 @@ import { HeroesContext } from '../../App';
 import { STAR_WARS_HEROES, UPDATE_STAR_WARS_HEROES, UPDATE_THEME } from '../../constants';
 import { getStarWarsHeroes, getNextPage, searchStarWarsHeroes } from '../../utils/transporter';
 
+import SwitchThemeButton from '../buttons/switch-theme-button';
 import HeroesSearch from './heroes-search';
 import HeroesList from './heroes-body';
 import Loader from '../loader';
@@ -26,7 +27,7 @@ function HeroesManagement() {
 			});
 	};
 
-	const handleHeroeInput = (e) => {
+	const handleHeroInput = (e) => {
 		const { value } = e.target;
 		searchStarWarsHeroes(value).then((results) => {
 			dispatch({ type: UPDATE_STAR_WARS_HEROES, payload: { results, value } });
@@ -35,11 +36,8 @@ function HeroesManagement() {
 
 	return (
 		<>
-			<HeroesSearch
-				handleHeroeInput={handleHeroeInput}
-				handleNextPage={handleNextPage}
-				heroValue={heroValue}
-			/>
+			<HeroesSearch handleHeroInput={handleHeroInput} handleNextPage={handleNextPage} heroValue={heroValue} />
+			<SwitchThemeButton />
 			<HeroesList persons={persons} />
 			<Loader handleNextPage={handleNextPage} />
 		</>

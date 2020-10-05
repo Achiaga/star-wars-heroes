@@ -48,8 +48,6 @@ function reducer(state, action) {
 function App() {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	console.log(state);
-
 	return (
 		<ThemeProvider theme={state.isDarkMode ? darkTheme : lightTheme}>
 			<HeroesContext.Provider value={{ state, dispatch }}>

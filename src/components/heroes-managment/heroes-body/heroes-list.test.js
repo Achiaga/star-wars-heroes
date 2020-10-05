@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeProvider } from 'styled-components';
@@ -52,22 +51,19 @@ const HEROES_LIST_ITEM_ID = 'heroes-list-item';
 const HEROES_LIST_ITEM_NAME = 'heroes-list-item-name';
 const HEROES_LIST_ITEM_GENDER = 'heroes-list-item-gender';
 
-const getHeroeItem = (conditionIndex = 0) => {
+const getHeroItem = (conditionIndex = 0) => {
 	return screen.getAllByTestId(HEROES_LIST_ITEM_ID)[conditionIndex];
 };
 const getAllHeroesItems = (conditionIndex = 0) => {
 	return screen.getAllByTestId(HEROES_LIST_ITEM_ID);
 };
-// const getAllHeroesItems = (conditionIndex = 0) => {
-// 	return screen.getAllByTestId(HEROES_LIST_ITEM_ID);
-// };
 
 describe('heroes-list', () => {
 	it('should get a item with the heroes data', () => {
 		renderComponent(initialProps);
-		const { getByText } = within(getHeroeItem());
-		const test1Heroe = getByText('Test1');
-		expect(test1Heroe).toBeInTheDocument();
+		const { getByText } = within(getHeroItem());
+		const test1Hero = getByText('Test1');
+		expect(test1Hero).toBeInTheDocument();
 	});
 	it('gets a list of all the heroes', () => {
 		renderComponent(extendedProps);
@@ -81,9 +77,9 @@ describe('heroes-list', () => {
 		[2, 'Test4'],
 	])('should get all the heroes names correctly', (itemPosition, heroName) => {
 		renderComponent(extendedProps);
-		const { getByTestId } = within(getHeroeItem(itemPosition));
-		const getHeroeName = getByTestId(HEROES_LIST_ITEM_NAME);
-		expect(getHeroeName.textContent).toBe(heroName);
+		const { getByTestId } = within(getHeroItem(itemPosition));
+		const getHeroName = getByTestId(HEROES_LIST_ITEM_NAME);
+		expect(getHeroName.textContent).toBe(heroName);
 	});
 
 	test.each([
@@ -92,8 +88,8 @@ describe('heroes-list', () => {
 		[2, 'female4'],
 	])("should get all the heroes' gender names correctly", (itemPosition, heroGender) => {
 		renderComponent(extendedProps);
-		const { getByTestId } = within(getHeroeItem(itemPosition));
-		const getHeroeName = getByTestId(HEROES_LIST_ITEM_GENDER);
-		expect(getHeroeName.textContent).toBe(heroGender);
+		const { getByTestId } = within(getHeroItem(itemPosition));
+		const getHeroName = getByTestId(HEROES_LIST_ITEM_GENDER);
+		expect(getHeroName.textContent).toBe(heroGender);
 	});
 });

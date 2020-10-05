@@ -15,7 +15,7 @@ const Button = styled.button`
 const Loader = ({ handleNextPage }) => {
 	return (
 		<Wrapper>
-			<Button data-testid='load' onClick={handleNextPage}>
+			<Button data-testid='load-recipes-button' onClick={handleNextPage}>
 				Load more
 			</Button>
 		</Wrapper>
