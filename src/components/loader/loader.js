@@ -1,11 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const LoaderWrapper = styled.div`
-	width: 100%;
-	height: 50px;
+const Wrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2em;
 `;
 
-const Loader = React.forwardRef((props, ref) => <LoaderWrapper ref={ref} />);
+const Button = styled.button`
+	padding: 1em;
+`;
+
+const Loader = ({ handleNextPage }) => {
+	return (
+		<Wrapper>
+			<Button data-testid='load' onClick={handleNextPage}>
+				Load more
+			</Button>
+		</Wrapper>
+	);
+};
 
 export default Loader;

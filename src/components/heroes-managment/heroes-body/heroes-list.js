@@ -35,12 +35,12 @@ const CardName = styled(CardText)`
 
 const HeroesList = ({ persons }) => {
 	return (
-		<Wrapper>
+		<Wrapper data-testid='resolved'>
 			{persons.map((hero, index) => {
 				return (
-					<Card id={hero.name} key={index}>
-						<CardName>{hero.name}</CardName>
-						<hr></hr>
+					<Card data-testid='heroes-list-item' id={hero.name} key={index}>
+						<CardName data-testid='heroes-list-item-name'>{hero.name}</CardName>
+						<hr />
 						<HeroDetails hero={hero} />
 					</Card>
 				);

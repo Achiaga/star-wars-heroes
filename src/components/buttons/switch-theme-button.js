@@ -1,6 +1,7 @@
 import React, { useContext, useCallback } from 'react';
 import styled from 'styled-components';
 import { HeroesContext } from '../../App';
+import { UPDATE_THEME } from '../../constants';
 
 const ButtonToggler = styled.button`
 	margin-top: 2em;
@@ -8,16 +9,18 @@ const ButtonToggler = styled.button`
 `;
 
 const TogglerButton = () => {
-	const { isDarkMode, setIsDarkMode } = useContext(HeroesContext);
+	const { state, dispatch } = useContext(HeroesContext);
+
+	const isDarkMode = !state.isDarkMode;
 
 	const getToggleButtonText = useCallback(() => {
-		return `Toggle ${!isDarkMode ? 'Dark' : 'Light'} Mode`;
+		return `Toggle ${isDarkMode ? 'Dark' : 'Light'} Mode`;
 	}, [isDarkMode]);
 
-	const handleClick = useCallback(() => {
-		setIsDarkMode(!isDarkMode);
-		localStorage.setItem('isDarkMode', !isDarkMode);
-	}, [isDarkMode, setIsDarkMode]);
+	const handleClick = () => {
+		localStorage.setItem('isDarkMode', isDarkMode);
+		dispatch({ type: UPDATE_THEME, payload: isDarkMode });
+	};
 
 	return <ButtonToggler onClick={handleClick}>{getToggleButtonText()}</ButtonToggler>;
 };

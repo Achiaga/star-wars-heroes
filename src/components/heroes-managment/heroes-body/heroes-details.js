@@ -40,7 +40,7 @@ const HeroesDetails = ({ hero }) => {
 				<WrapperSpec>
 					<span>{HeroSpec[item]}</span>
 				</WrapperSpec>
-				<WrapperHeroSpec>
+				<WrapperHeroSpec data-testid={item === 'gender' ? 'heroes-list-item-gender' : 'none'}>
 					<span>{hero[item]}</span>
 				</WrapperHeroSpec>
 			</WrapperCardDetails>

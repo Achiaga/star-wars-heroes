@@ -1,12 +1,11 @@
-import React, { useReducer, useState, createContext } from 'react';
+import React, { useReducer, createContext } from 'react';
 import { ThemeProvider } from 'styled-components';
-
 import darkTheme from './themes/dark';
 import lightTheme from './themes/light';
+
+import { STAR_WARS_HEROES, UPDATE_STAR_WARS_HEROES, UPDATE_THEME } from './constants';
+
 import Home from './components/home';
-import { getIsDarkMode } from './utils/helper';
-import { STAR_WARS_HEROES, UPDATE_STAR_WARS_HEROES, UPDATE_API_CALL } from './constants';
-import getActions from './actions';
 
 export const HeroesContext = createContext({});
 
@@ -15,33 +14,31 @@ const initialState = {
 	nextPage: null,
 	count: null,
 	heroValue: '',
-	lastAPIcall: '',
+	isDarkMode: localStorage.getItem('isDarkMode') === 'true' ? true : false,
 };
 
-function reducer(state, { payload, type }) {
-	console.log(state);
-	switch (type) {
+function reducer(state, action) {
+	const { results, next, count, value } = action.payload;
+	switch (action.type) {
 		case STAR_WARS_HEROES:
-			const { next, count } = payload;
 			return {
 				...state,
-				persons: [...state.persons, ...payload.results],
+				persons: [...state.persons, ...action.payload.results],
 				nextPage: next,
 				count: count,
 			};
-		case UPDATE_API_CALL:
-			return {
-				...state,
-				lastAPIcall: payload,
-			};
 		case UPDATE_STAR_WARS_HEROES:
-			const { hero, value } = payload;
 			return {
 				...state,
-				persons: hero.results,
-				nextPage: hero.next,
-				count: hero.count,
+				persons: results.results,
+				nextPage: results.next,
+				count: results.count,
 				heroValue: value,
+			};
+		case UPDATE_THEME:
+			return {
+				...state,
+				isDarkMode: action.payload,
 			};
 		default:
 			return state;
@@ -50,12 +47,12 @@ function reducer(state, { payload, type }) {
 
 function App() {
 	const [state, dispatch] = useReducer(reducer, initialState);
-	const [isDarkMode, setIsDarkMode] = useState(getIsDarkMode);
-	const actions = getActions(dispatch);
+
+	console.log(state);
 
 	return (
-		<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-			<HeroesContext.Provider value={{ state, actions, isDarkMode, setIsDarkMode }}>
+		<ThemeProvider theme={state.isDarkMode ? darkTheme : lightTheme}>
+			<HeroesContext.Provider value={{ state, dispatch }}>
 				<Home />
 			</HeroesContext.Provider>
 		</ThemeProvider>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import SwitchThemeButton from '../../buttons/switch-theme-button';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -26,7 +26,7 @@ const HeroInput = styled.input`
 	}
 `;
 
-const SearchInput = ({ handleHeroeInput, handleNextPage, heroValue = '' }) => {
+const SearchInput = ({ handleHeroeInput, heroValue = '' }) => {
 	return (
 		<Wrapper>
 			<div>
@@ -38,7 +38,6 @@ const SearchInput = ({ handleHeroeInput, handleNextPage, heroValue = '' }) => {
 				/>
 			</div>
 			<SwitchThemeButton />
-			<div onClick={handleNextPage}>{/* <button >next</button> */}</div>
 		</Wrapper>
 	);
 };

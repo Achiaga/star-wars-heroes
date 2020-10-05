@@ -1,48 +1,37 @@
-import React, { useEffect, useContext, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useContext } from 'react';
 
 import { HeroesContext } from '../../App';
-import { isSameRequest, intersectionObserve } from '../../utils/helper';
+
+import { STAR_WARS_HEROES, UPDATE_STAR_WARS_HEROES, UPDATE_THEME } from '../../constants';
+import { getStarWarsHeroes, getNextPage, searchStarWarsHeroes } from '../../utils/transporter';
 
 import HeroesSearch from './heroes-search';
 import HeroesList from './heroes-body';
 import Loader from '../loader';
 
 function HeroesManagement() {
-	const { state, actions } = useContext(HeroesContext);
-	const [isInView, setIsInView] = useState(false);
-	const loaderRef = useRef(null);
-
-	const { nextPage, lastAPIcall, heroValue, persons } = state;
+	const { state, dispatch } = useContext(HeroesContext);
+	const { nextPage, heroValue, persons } = state;
 
 	useEffect(() => {
-		actions.getHeroes();
+		getStarWarsHeroes().then((results) => {
+			dispatch({ type: STAR_WARS_HEROES, payload: results });
+		});
 	}, []);
 
-	useEffect(() => {
-		intersectionObserve(loaderRef, updateObeserverStatus);
-	});
-
-	useEffect(() => {
-		handleNextPage();
-	}, [isInView]);
-
-	const updateObeserverStatus = function (entities) {
-		setIsInView(entities[0].isIntersecting);
+	const handleNextPage = () => {
+		nextPage &&
+			getNextPage(nextPage).then((results) => {
+				dispatch({ type: STAR_WARS_HEROES, payload: results });
+			});
 	};
 
-	const handleNextPage = function () {
-		if (nextPage && !isSameRequest(lastAPIcall, nextPage)) {
-			actions.getHeroesNextPage(nextPage);
-		}
+	const handleHeroeInput = (e) => {
+		const { value } = e.target;
+		searchStarWarsHeroes(value).then((results) => {
+			dispatch({ type: UPDATE_STAR_WARS_HEROES, payload: { results, value } });
+		});
 	};
-
-	const handleHeroeInput = useCallback(
-		(e) => {
-			const { value } = e.target;
-			actions.searchHeroe(value);
-		},
-		[actions]
-	);
 
 	return (
 		<>
@@ -52,7 +41,7 @@ function HeroesManagement() {
 				heroValue={heroValue}
 			/>
 			<HeroesList persons={persons} />
-			<Loader ref={loaderRef} />
+			<Loader handleNextPage={handleNextPage} />
 		</>
 	);
 }
