@@ -10,5 +10,6 @@ export default {
 		secondaryTextColor: 'black',
 		complementTextColor: '#FFE820',
 		cardBg: 'white',
+		buttonColor: 'white',
 	},
 };

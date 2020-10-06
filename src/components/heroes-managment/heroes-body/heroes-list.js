@@ -6,6 +6,7 @@ import HeroDetails from './heroes-details';
 
 const Wrapper = styled.div`
 	padding: 1em 0;
+	padding-bottom: 7em;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -30,7 +31,6 @@ const CardText = styled.h4`
 const CardName = styled(CardText)`
 	padding: 0.1em 0;
 	font-size: 22px;
-	color: ${(props) => props.theme.colors.nameHeroe};
 `;
 
 const HeroesList = ({ persons }) => {

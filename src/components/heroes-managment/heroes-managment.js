@@ -27,8 +27,7 @@ function HeroesManagement() {
 			});
 	};
 
-	const handleHeroInput = (e) => {
-		const { value } = e.target;
+	const handleHeroInput = (value) => {
 		searchStarWarsHeroes(value).then((results) => {
 			dispatch({ type: UPDATE_STAR_WARS_HEROES, payload: { results, value } });
 		});

@@ -14,13 +14,13 @@ const ButtonToggler = styled.button`
 	padding: 1em;
 `;
 
-const TogglerButton = () => {
+const SwitchThemeButton = () => {
 	const { state, dispatch } = useContext(HeroesContext);
 
 	const isDarkMode = !state.isDarkMode;
 
 	const getToggleButtonText = useCallback(() => {
-		return `Toggle ${isDarkMode ? 'Dark' : 'Light'} Mode`;
+		return `Switch ${isDarkMode ? 'Dark' : 'Light'} Mode`;
 	}, [isDarkMode]);
 
 	const handleClick = () => {
@@ -35,4 +35,4 @@ const TogglerButton = () => {
 	);
 };
 
-export default TogglerButton;
+export default SwitchThemeButton;

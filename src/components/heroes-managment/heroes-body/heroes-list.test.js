@@ -49,7 +49,7 @@ const extendedProps = {
 
 const HEROES_LIST_ITEM_ID = 'heroes-list-item';
 const HEROES_LIST_ITEM_NAME = 'heroes-list-item-name';
-const HEROES_LIST_ITEM_GENDER = 'heroes-list-item-gender';
+const HEROES_LIST_ITEM_GENDER = 'heroes-details-item-gender';
 
 const getHeroItem = (conditionIndex = 0) => {
 	return screen.getAllByTestId(HEROES_LIST_ITEM_ID)[conditionIndex];
@@ -80,16 +80,5 @@ describe('heroes-list', () => {
 		const { getByTestId } = within(getHeroItem(itemPosition));
 		const getHeroName = getByTestId(HEROES_LIST_ITEM_NAME);
 		expect(getHeroName.textContent).toBe(heroName);
-	});
-
-	test.each([
-		[0, 'male1'],
-		[1, 'male3'],
-		[2, 'female4'],
-	])("should get all the heroes' gender names correctly", (itemPosition, heroGender) => {
-		renderComponent(extendedProps);
-		const { getByTestId } = within(getHeroItem(itemPosition));
-		const getHeroName = getByTestId(HEROES_LIST_ITEM_GENDER);
-		expect(getHeroName.textContent).toBe(heroGender);
 	});
 });

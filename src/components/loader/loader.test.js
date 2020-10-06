@@ -13,10 +13,10 @@ const renderComponent = (props) => {
 	);
 };
 
-const LOAD_MORE_BUTTON_TEXT = 'Load more';
+const LOAD_MORE_BUTTON_TEXT = 'load-recipes-button';
 
 const getLoadMoreButton = (conditionIndex = 0) => {
-	return screen.getAllByText(LOAD_MORE_BUTTON_TEXT)[conditionIndex];
+	return screen.getAllByTestId(LOAD_MORE_BUTTON_TEXT)[conditionIndex];
 };
 
 describe('loader', () => {

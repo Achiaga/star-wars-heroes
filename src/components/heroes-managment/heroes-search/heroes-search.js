@@ -26,6 +26,10 @@ const HeroInput = styled.input`
 `;
 
 const SearchInput = ({ handleHeroInput, heroValue = '' }) => {
+	const handleChange = (e) => {
+		const { value } = e.target;
+		handleHeroInput(value);
+	};
 	return (
 		<Wrapper>
 			<div>
@@ -33,7 +37,7 @@ const SearchInput = ({ handleHeroInput, heroValue = '' }) => {
 					type='text'
 					placeholder='Search a Star Wars Heroe'
 					aria-label='search-input'
-					onChange={handleHeroInput}
+					onChange={handleChange}
 					value={heroValue}
 				/>
 			</div>

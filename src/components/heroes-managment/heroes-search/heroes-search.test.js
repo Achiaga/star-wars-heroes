@@ -11,28 +11,29 @@ const renderComponent = (props) => {
 		</ThemeProvider>
 	);
 };
-
-const initialprops = {
+const handleHeroInput = jest.fn();
+const initialProps = {
+	handleHeroInput,
 	heroValue: '',
 };
 
 const SEARCH_INPUT_LABEL = 'search-input';
 
-const getLoadMoreButton = () => {
+const getHeroInput = () => {
 	return screen.getByLabelText(SEARCH_INPUT_LABEL);
 };
 
 describe('search input', () => {
+	beforeEach(() => {
+		renderComponent(initialProps);
+	});
 	it('should render a input component', () => {
-		const handleHeroInput = jest.fn();
-		renderComponent(initialprops, handleHeroInput);
-		const searchInput = getLoadMoreButton();
+		const searchInput = getHeroInput();
 		expect(searchInput).toBeInTheDocument();
 	});
-	// it('should call the handleHeroInput function when the input is changed', () => {
-	// 	renderComponent(handleHeroInput);
-	// 	const searchInput = getLoadMoreButton();
-	// 	fireEvent.change(searchInput, { target: { value: '23' } });
-	// 	expect(searchInput.value).toBe('$23');
-	// });
+	it('should call the handleHeroInput function when the input is changed', () => {
+		const searchInput = getHeroInput();
+		fireEvent.change(searchInput, { target: { value: '23' } });
+		expect(handleHeroInput).toHaveBeenCalledWith('23');
+	});
 });
