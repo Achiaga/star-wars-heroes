@@ -1,9 +1,10 @@
 # STAR WARS HEROES
 
+> Search for your favorites heroes from star wars and know their details
+
 <div align="center">
     <img alt="GitHub Profile Readme Generator" src="./src/assets/img/demo.png" width="200" />
-</div> 
-> Search for your favorites heroes from star wars and know their details
+</div>
 
 ## 💻 Built with
 
@@ -37,16 +38,6 @@ yarn install
 
 ```bash
 yarn start
-```
-
-## 🧪 Run Tests
-
-(After installing the repository)
-
-1. Run test
-
-```bash
-yarn test
 ```
 
 🌟 You are all set!
