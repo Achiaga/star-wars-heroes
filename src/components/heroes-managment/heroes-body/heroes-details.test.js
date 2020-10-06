@@ -23,8 +23,8 @@ const initialProps = {
 	},
 };
 
-const HEROES_LIST_ITEM_ID = 'heroes-details-item';
-const HEROES_LIST_ITEM_GENDER = 'heroes-details-item-gender';
+const HEROES_LIST_ITEM_ID = 'hero-details-item';
+const HEROES_LIST_ITEM_GENDER = 'hero-details-item-gender';
 
 const getHeroItem = (conditionIndex = 0) => {
 	return screen.getAllByTestId(HEROES_LIST_ITEM_ID)[conditionIndex];
