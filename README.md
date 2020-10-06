@@ -13,6 +13,7 @@
 - [Styled-components](https://styled-components.com/): for styling
 - [Axios](https://github.com/axios/axios): for fetching data
 - [React Testing Library](https://testing-library.com/): for unit-testing
+- [Husky](https://typicode.github.io/husky/#/): for improving workflow
 
 ## 🛠️ Installation Steps
 

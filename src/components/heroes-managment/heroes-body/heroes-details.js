@@ -25,7 +25,7 @@ const WrapperHeroSpec = styled.div`
 	width: 30%;
 `;
 
-const HeroSpec = {
+const heroSpec = {
 	gender: 'Gender',
 	birth_year: 'Birth year',
 	height: 'Height',
@@ -34,11 +34,11 @@ const HeroSpec = {
 };
 
 const HeroesDetails = ({ hero }) => {
-	return Object.keys(HeroSpec).map((item, index) => {
+	return Object.keys(heroSpec).map((item, index) => {
 		return (
 			<WrapperCardDetails data-testid='hero-details-item' key={index}>
 				<WrapperSpec>
-					<span>{HeroSpec[item]}</span>
+					<span>{heroSpec[item]}</span>
 				</WrapperSpec>
 				<WrapperHeroSpec data-testid='hero-details-item-gender'>
 					<span>{hero[item]}</span>

@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 
 import { HeroesContext } from '../../App';
 
-import { STAR_WARS_HEROES, UPDATE_STAR_WARS_HEROES, UPDATE_THEME } from '../../constants';
+import { STAR_WARS_HEROES, UPDATE_STAR_WARS_HEROES } from '../../constants';
 import { getStarWarsHeroes, getNextPage, searchStarWarsHeroes } from '../../utils/transporter';
 
 import SwitchThemeButton from '../buttons/switch-theme-button';
