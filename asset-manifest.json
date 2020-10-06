@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/star-wars-heroes/static/css/main.383b258e.chunk.css",
+    "main.js": "/star-wars-heroes/static/js/main.22a4011a.chunk.js",
+    "main.js.map": "/star-wars-heroes/static/js/main.22a4011a.chunk.js.map",
+    "runtime-main.js": "/star-wars-heroes/static/js/runtime-main.19289104.js",
+    "runtime-main.js.map": "/star-wars-heroes/static/js/runtime-main.19289104.js.map",
+    "static/js/2.039320b7.chunk.js": "/star-wars-heroes/static/js/2.039320b7.chunk.js",
+    "static/js/2.039320b7.chunk.js.map": "/star-wars-heroes/static/js/2.039320b7.chunk.js.map",
+    "index.html": "/star-wars-heroes/index.html",
+    "precache-manifest.cb3907c352cd760a3e9d65a19dcb2b9d.js": "/star-wars-heroes/precache-manifest.cb3907c352cd760a3e9d65a19dcb2b9d.js",
+    "service-worker.js": "/star-wars-heroes/service-worker.js",
+    "static/css/main.383b258e.chunk.css.map": "/star-wars-heroes/static/css/main.383b258e.chunk.css.map",
+    "static/js/2.039320b7.chunk.js.LICENSE.txt": "/star-wars-heroes/static/js/2.039320b7.chunk.js.LICENSE.txt",
+    "static/media/light-big.jpg": "/star-wars-heroes/static/media/light-big.557f1dda.jpg",
+    "static/media/light.png": "/star-wars-heroes/static/media/light.247a81fb.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.19289104.js",
+    "static/js/2.039320b7.chunk.js",
+    "static/css/main.383b258e.chunk.css",
+    "static/js/main.22a4011a.chunk.js"
+  ]
+}
