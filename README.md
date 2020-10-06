@@ -1,9 +1,10 @@
 # STAR WARS HEROES
 
+> Search for your favorites heroes from star wars and know their details
+
 <div align="center">
     <img alt="GitHub Profile Readme Generator" src="./src/assets/img/demo.png" width="200" />
-</div> 
-> Search for your favorites heroes from star wars and know their details
+</div>
 
 ## 💻 Built with
 
@@ -12,6 +13,7 @@
 - [Styled-components](https://styled-components.com/): for styling
 - [Axios](https://github.com/axios/axios): for fetching data
 - [React Testing Library](https://testing-library.com/): for unit-testing
+- [Husky](https://typicode.github.io/husky/#/): for improving workflow
 
 ## 🛠️ Installation Steps
 
@@ -37,16 +39,6 @@ yarn install
 
 ```bash
 yarn start
-```
-
-## 🧪 Run Tests
-
-(After installing the repository)
-
-1. Run test
-
-```bash
-yarn test
 ```
 
 🌟 You are all set!

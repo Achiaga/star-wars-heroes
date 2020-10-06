@@ -23,8 +23,8 @@ const initialProps = {
 	},
 };
 
-const HEROES_LIST_ITEM_ID = 'heroes-details-item';
-const HEROES_LIST_ITEM_GENDER = 'heroes-details-item-gender';
+const HEROES_LIST_ITEM_ID = 'hero-details-item';
+const HEROES_LIST_ITEM_GENDER = 'hero-details-item-gender';
 
 const getHeroItem = (conditionIndex = 0) => {
 	return screen.getAllByTestId(HEROES_LIST_ITEM_ID)[conditionIndex];
@@ -46,13 +46,6 @@ describe('heroes-details', () => {
 		const allHeroesItems = getAllHeroesItems();
 		expect(allHeroesItems).toHaveLength(5);
 	});
-
-	// test("should get each heroes' details correctly", () => {
-	// 	renderComponent(initialProps);
-	// 	const { getByTestId } = within(getHeroItem());
-	// 	const getDetails = getByTestId('heroes-details-item-gender');
-	// 	expect(getDetails).toBeInTheDocument();
-	// });
 
 	test.each([
 		[0, 'male1'],
