@@ -36,11 +36,11 @@ const HeroSpec = {
 const HeroesDetails = ({ hero }) => {
 	return Object.keys(HeroSpec).map((item, index) => {
 		return (
-			<WrapperCardDetails key={index}>
+			<WrapperCardDetails data-testid='heroes-details-item' key={index}>
 				<WrapperSpec>
 					<span>{HeroSpec[item]}</span>
 				</WrapperSpec>
-				<WrapperHeroSpec>
+				<WrapperHeroSpec data-testid='heroes-details-item-gender'>
 					<span>{hero[item]}</span>
 				</WrapperHeroSpec>
 			</WrapperCardDetails>

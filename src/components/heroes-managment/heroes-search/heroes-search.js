@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import SwitchThemeButton from '../../buttons/switch-theme-button';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -26,26 +25,28 @@ const HeroInput = styled.input`
 	}
 `;
 
-const SearchInput = ({ handleHeroeInput, handleNextPage, heroValue = '' }) => {
+const SearchInput = ({ handleHeroInput, heroValue = '' }) => {
+	const handleChange = (e) => {
+		const { value } = e.target;
+		handleHeroInput(value);
+	};
 	return (
 		<Wrapper>
 			<div>
 				<HeroInput
 					type='text'
 					placeholder='Search a Star Wars Heroe'
-					onChange={handleHeroeInput}
+					aria-label='search-input'
+					onChange={handleChange}
 					value={heroValue}
 				/>
 			</div>
-			<SwitchThemeButton />
-			<div onClick={handleNextPage}>{/* <button >next</button> */}</div>
 		</Wrapper>
 	);
 };
 
 SearchInput.propTypes = {
-	handleHeroeInput: PropTypes.func.isRequired,
-	handleNextPage: PropTypes.func.isRequired,
+	handleHeroInput: PropTypes.func.isRequired,
 	heroValue: PropTypes.string,
 };
 
